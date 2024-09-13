@@ -7,8 +7,15 @@ read email
 git config --global user.email $email
 git config --global user.name $full_name
 
+# Add and commit changes
 git add .
 git commit --message "My identity for @lewagon in the gitconfig"
+
+# Use Personal Access Token for authentication
+echo "Type in your GitHub Personal Access Token: "
+read -s pat  # -s flag hides the input for security
+
+git remote set-url origin https://$GITHUB_USERNAME:$pat@github.com/$GITHUB_USERNAME/dotfiles.git
 git push origin master
 
 git remote add upstream git@github.com:lewagon/dotfiles.git
